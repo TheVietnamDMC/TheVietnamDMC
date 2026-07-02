@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Quote | The Vietnam DMC</title>
+<link rel="icon" href="bg_logo.png" type="image/png"> 
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --crimson:     #A10028;
+    --crimson-dk:  #6e001b;
+    --crimson-lt:  #f5e8ec;
+    --gold:        #c9a96e;
+    --gold-lt:     #f8f2e8;
+    --ivory:       #faf7f4;
+    --ivory-dk:    #f0ebe4;
+    --ink:         #2a1a1f;
+    --ink-mid:     #5c4148;
+    --ink-muted:   #9c8a8f;
+    --white:       #ffffff;
+    --border:      rgba(161, 0, 40, 0.10);
+    --border-gold: rgba(201, 169, 110, 0.25);
+    --shadow:      rgba(42, 26, 31, 0.08);
+    --radius:      4px;
+    --radius-lg:   10px;
+    --radius-xl:   18px;
+    --transition:  0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background-color: var(--ivory);
+    background-image:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,169,110,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 90%, rgba(161,0,40,0.06) 0%, transparent 55%);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 56px 20px 72px;
+    color: var(--ink);
+  }
+
+  /* ── OUTER CARD ── */
+  .card {
+    width: 100%;
+    max-width: 660px;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-gold);
+    box-shadow:
+      0 2px 4px var(--shadow),
+      0 12px 40px rgba(42, 26, 31, 0.10),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+    overflow: hidden;
+    animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--crimson);
+    background-image:
+      linear-gradient(135deg, #6e001b  0%, #6e001b  55%, #6e001b 100%);
+    padding: 36px 44px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* .header::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  } */
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.25);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.20);
+  }
+
+  /* Extra circles */
+  .header .circle3 {
+    position: absolute;
+    top: 50%; left: -40px;
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.15);
+    transform: translateY(-50%);
+  }
+  .header .circle4 {
+    position: absolute;
+    bottom: 10px; right: 80px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 3px solid rgba(201,169,110,0.35);
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .logo-wrap img {
+    height: 75px;
+    filter: brightness(0) invert(1) drop-shadow(0 1px 4px rgba(0,0,0,0.25));
+  }
+
+  .logo-divider {
+    width: 1px;
+    height: 34px;
+    background: rgba(255,255,255,0.25);
+  }
+
+  .logo-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+  }
+
+  .logo-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .header-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-tagline {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.52);
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  /* ── GOLD STRIPE ── */
+  .stripe {
+    height: 6px;
+    background: linear-gradient(90deg, var(--gold-lt), #d8971f 70%, #d8971f 70%, var(--gold-lt));
+  }
+
+  /* ── FORM BODY ── */
+  .form-body {
+    padding: 38px 44px 40px;
+  }
+
+  /* Section label */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-gold);
+  }
+
+  /* Field groups */
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .field.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+  }
+
+  label span.req {
+    color: var(--crimson);
+    margin-left: 2px;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--ivory);
+    border: 1px solid #e8dfe3;
+    border-radius: var(--radius-lg);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  input:hover, textarea:hover, select:hover {
+    border-color: rgba(161, 0, 40, 0.22);
+    background: #fdfbfa;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--crimson);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(161, 0, 40, 0.08);
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+  }
+
+  /* Select wrapper */
+  .select-wrap {
+    position: relative;
+  }
+  .select-wrap::after {
+    content: '';
+    position: absolute;
+    right: 14px; top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--ink-muted);
+    pointer-events: none;
+  }
+  .select-wrap select { cursor: pointer; padding-right: 36px; }
+
+  /* Spacer between sections */
+  .section-gap { margin-top: 28px; }
+
+  /* ── SUBMIT ── */
+  .submit-wrap {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 16px 28px;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--crimson);
+    background-image: linear-gradient(135deg, #6e001b 0%, #8a001f 100%);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  button[type="submit"]::after {
+    content: '→';
+    margin-left: 10px;
+    display: inline-block;
+    transition: transform var(--transition);
+  }
+
+  button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(161, 0, 40, 0.30);
+  }
+
+  button[type="submit"]:hover::after {
+    transform: translateX(4px);
+  }
+
+  button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(161, 0, 40, 0.20);
+  }
+
+  button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .response-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  .response-note::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: #4caf88;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(76,175,136,0.25);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ivory-dk);
+    border-top: 1px solid var(--border-gold);
+    padding: 18px 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .footer-text {
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  .footer-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    
+    color: var(--gold);
+    background: rgba(201, 169, 110, 0.12);
+    border: 1px solid var(--border-gold);
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── SUCCESS STATE ── */
+  .success-state {
+    display: none;
+    text-align: center;
+    padding: 60px 44px;
+  }
+
+  .success-icon {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, var(--crimson), var(--crimson-dk));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    box-shadow: 0 8px 24px rgba(161, 0, 40, 0.25);
+  }
+
+  .success-icon svg { width: 28px; height: 28px; stroke: white; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  .success-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .success-msg {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    body { padding: 24px 14px 48px; }
+    .header, .form-body, .footer { padding-left: 24px; padding-right: 24px; }
+    .header-title { font-size: 30px; }
+    .field-row { grid-template-columns: 1fr; }
+  }
+  .header {
+  display: flex;
+  flex-direction: column;
+}
+
+/* RIGHT ALIGN BUTTON */
+/* .nav-btn {
+  position: absolute;
+  right: 44px;
+  top: 40px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f3d77d, #e8c45a);
+  color: #4b0013;
+  font-family: 'Jost', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  transition: 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  display: inline-block;
+  border: none;
+  outline: none;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  background: linear-gradient(135deg, #f7e08a, #f3d77d);
+}
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+} */
+ .nav-btn {
+  position: absolute;
+  right: 44px;
+  top: 40px;
+  background: linear-gradient(135deg, #edc235, #e7d28a);
+  padding: 12px 20px;
+  border-radius: 999px;
+  color: #4b0013;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-wrap">
+      <a href="index.htm" class="nav-btn">Home</a>
+      <img src="https://sembark.com/assets/images/Business%20Logos/websitelogo.png" alt="Company Logo" onerror="this.style.display='none'">
+      <div class="logo-divider"></div>
+      <div>
+        <div class="logo-label">TheVietnamDMC</div>
+        <div class="logo-sub">B2B Partner Portal</div>
+      </div>
+    </div>
+    <div class="header-title">Request a <em>Quote</em></div>
+    <div class="header-tagline">Premium Ground Operations · Vietnam</div>
+  </div>
+
+  <div class="stripe"></div>
+
+  <!-- FORM -->
+  <div class="form-body" id="formSection">
+    <form id="quoteForm" novalidate>
+
+      <div class="section-label">Agent & Company Details</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Agent Name <span class="req">*</span></label>
+          <input type="text" id="name" placeholder="Your full name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="company">Company Name <span class="req">*</span></label>
+          <input type="text" id="company" placeholder="Travel agency / company" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="email">Email Address <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="you@company.com" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone">WhatsApp / Phone <span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="+91 98xxx xxxxx" required autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="section-gap">
+        <div class="section-label">Travel Requirement Description</div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="pax">No. of Pax</label>
+          <input type="number" id="pax" placeholder="e.g. 2 adults" min="1">
+        </div>
+        <div class="field">
+          <label for="category">Hotel Category</label>
+          <div class="select-wrap">
+            <select id="category">
+              <option value="" disabled selected>Select star category</option>
+              <option value="3star">3 Star</option>
+              <option value="4star">4 Star</option>
+              <option value="5star">5 Star</option>
+              <option value="luxury">Resort / Boutique</option>
+              <option value="Booked">Self Booked</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="message">Itinerary & Requirements <span class="req">*</span></label>
+        <textarea id="message" placeholder="Please share: travel dates, destinations, itinerary outline, any special requests or inclusions…" required></textarea>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" id="submitBtn">Send Quote Request</button>
+        <div class="response-note">Typical response within 2-4 business hours</div>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- SUCCESS STATE -->
+  <div class="success-state" id="successSection">
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <div class="success-title">Quote Request Sent</div>
+    <p class="success-msg">Thank you. Our team will review your requirement and respond within 2-4 business hours. Please check your inbox (and spam folder).</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="footer-text">Enquiries are handled confidentially · B2B only</span>
+    <span class="footer-badge">TheVietnamDMC</span>
+  </div>
+<div class="header">
+  <div class="circle3"></div>
+  <div class="circle4"></div>
+  <!-- rest of your header content stays the same -->
+</div>
+
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init("weJjgVd5FX6iO0nBW");
+
+  const form    = document.getElementById("quoteForm");
+  const btn     = document.getElementById("submitBtn");
+  const formSec = document.getElementById("formSection");
+  const sucSec  = document.getElementById("successSection");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Basic validation
+    const required = ["name", "company", "email", "phone", "message"];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.style.borderColor = "#A10028";
+        el.style.boxShadow = "0 0 0 3px rgba(161,0,40,0.12)";
+        valid = false;
+        el.addEventListener("input", function reset() {
+          el.style.borderColor = "";
+          el.style.boxShadow = "";
+          el.removeEventListener("input", reset);
+        }, { once: true });
+      }
+    });
+    if (!valid) return;
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    emailjs.send("service_5se2rcr", "template_l3v6zf6", {
+      from_name:    document.getElementById("name").value,
+      company_name: document.getElementById("company").value,
+      from_email:   document.getElementById("email").value,
+      phone:        document.getElementById("phone").value,
+      pax:          document.getElementById("pax").value || "Not specified",
+      hotel_cat:    document.getElementById("category").value || "Not specified",
+      message:      document.getElementById("message").value
+    })
+    .then(() => {
+      formSec.style.display = "none";
+      sucSec.style.display  = "block";
+    })
+    .catch((err) => {
+      console.error(err);
+      btn.disabled = false;
+      btn.textContent = "Send Quote Request";
+      alert("Unable to send. Please try again or contact us directly.");
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="bg_logo.png" type="image/png"> 
+
+<title>TheVietnamDMC</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--maroon:#b9b5b7;
+--wine:#A10028;
+--gold:#D4AF37;
+--cream:#b4afaf;
+--card:#FFF9FB;
+}
+.office-section{
+    background:#f8f3eb;
+    padding:90px 0;
+}
+
+.office-container{
+    max-width:1400px;
+    margin:auto;
+    padding:0 40px;
+}
+
+.office-title{
+    text-align:center;
+    font-size:54px;
+    font-weight:600;
+    color:#3b1f1f;
+    margin-bottom:15px;
+    font-family:'Cormorant Garamond', serif;
+    position:relative;
+}
+
+.office-title::after{
+    content:'';
+    width:100px;
+    height:3px;
+    background:#d4af37;
+    display:block;
+    margin:15px auto 0;
+    border-radius:10px;
+}
+
+.office-grid{
+    display:grid;
+    grid-template-columns:2.3fr 1fr;
+    gap:35px;
+    align-items:start;
+}
+
+.office-map{
+    height:460px;
+}
+.office-map iframe{
+    width:100%;
+    height:100%;
+    border:6px solid #d4af37;
+    border-radius:24px;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.12),
+        0 0 0 10px rgba(212,175,55,.08);
+}
+
+.office-info{
+    background:#fff;
+    border-radius:24px;
+    padding:24px;                 /* reduced from 30px */
+    border-left:6px solid #d4af37;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    height:460px;                 /* fixed as requested */
+    box-sizing:border-box;
+    overflow:hidden;              /* no scroll */
+}
+
+/* Section Headings */
+.office-info h3{
+    font-size:21px;               /* reduced from 24px */
+    color:#6d1731;
+    margin-bottom:8px;            /* tighter spacing */
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+.office-info h3 { margin-top: 2px; }
+/* Text Content */
+.office-info p{
+    font-size:16.5px;             /* reduced from 18px */
+    line-height:1.6;              /* tighter but readable */
+    color:#555;
+    margin:0;
+}
+
+/* Divider */
+.office-info hr{
+    margin:18px 0;                /* reduced from 25px */
+    border:none;
+    border-top:1px solid #e4e4e4;
+}
+
+@media(max-width:991px){
+
+    .office-grid{
+        grid-template-columns:1fr;
+    }
+
+    .office-map{
+        height:400px;
+    }
+
+    .office-title{
+        font-size:40px;
+    }
+}
+/* Reduce gap above Luxury Services */
+section.container:has(.luxury-grid) {
+    padding-top: 40px;   /* was ~90px */
+}
+/* Alternative safe method */
+.luxury-grid {
+    margin-top: -30px;
+}
+
+/* ─── LUXURY SERVICES ───────────────────────── */
+/* Luxury Services Title Enhancement */
+section.container .title h2 {
+    margin-bottom: 40px;     /* reduce excessive gap */
+    letter-spacing: 0.5px;
+    color: #3b1f1f;
+    position: relative;
+}
+
+/* Gold underline */
+section.container .title h2::after {
+    content: '';
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg,#d4af37,#f3d77d);
+    display: block;
+    margin: 16px auto 0;
+    border-radius: 10px;
+}
+.luxury-grid{
+    gap:28px;
+}
+.luxury-card{
+    background: #fff;
+    border-radius: 28px;
+    padding: 36px 28px;
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.08),
+        inset 0 0 0 1px rgba(212,175,55,0.15);
+}
+.luxury-icon{
+    margin-bottom: 14px;
+}
+
+.luxury-card h3{
+    margin-bottom: 10px;
+}
+
+.luxury-card p{
+    max-width: 260px;
+    margin: 0 auto;
+}
+.luxury-card{
+    background:linear-gradient(180deg,#ffffff,#f7f3ef);
+    border-radius:26px;
+    padding:34px 26px;
+    text-align:center;
+    box-shadow:0 18px 40px rgba(0,0,0,0.08);
+    transition:all .35s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+/* Gold Accent Line */
+.luxury-card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,#d4af37,#f3d77d);
+}
+
+/* Icon */
+.luxury-icon{
+    font-size:44px;
+    margin-bottom:18px;
+    transition:.35s ease;
+}
+
+/* Title */
+.luxury-card h3{
+    font-size:22px;
+    font-weight:700;
+    color:#5d0b24;
+    margin-bottom:12px;
+}
+
+/* Description */
+.luxury-card p{
+    font-size:16px;
+    line-height:1.6;
+    color:#555;
+}
+
+/* Hover */
+.luxury-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 55px rgba(0,0,0,0.12);
+}
+
+.luxury-card:hover .luxury-icon{
+    transform:scale(1.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'DM Sans',sans-serif;
+color:#2b1820;
+overflow-x:hidden;
+position:relative;
+zoom:0.95;
+}
+ 
+.container{
+max-width:1700px;
+width:96%;
+margin:auto;
+}
+
+.hero h1{
+font-size:4.2rem;
+line-height:1;
+}
+
+nav{
+width:min(1400px,50%);
+nav{
+background:rgba(0, 0, 0, 0.45);
+}
+}
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:min(1600px,95%);
+z-index:99;
+
+background:#aba8a8;       /* main card color */
+padding:18px 28px;
+border-radius:32px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+border:4px solid #635a5a; /* border color */
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+.logo{color:#1b1313;font-weight:700;font-size:1.4rem}
+nav ul{display:flex;gap:24px;list-style:none}
+/* nav a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+} */
+ nav a{
+text-decoration:none;
+color:#000000;
+font-weight:700;
+font-size:1.1rem;
+}
+.cta{background:linear-gradient(135deg,var(--gold),#f3d77d);padding:12px 20px;border-radius:999px;color:#4b0013;font-weight:bold}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;color:#fff}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.badge{display:inline-block;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.12);margin-bottom:20px}
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:4.2rem;
+    line-height:1;
+}
+.hero p{font-size:1.2rem;margin:20px 0 30px;max-width:700px}
+.btns a{display:inline-block;margin-right:12px;padding:15px 24px;border-radius:18px;text-decoration:none}
+.btn-primary{background:linear-gradient(135deg,var(--wine),#c03c65);color:#fff}
+.btn-secondary{background:rgba(255,255,255,.15);color:#fff}
+
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.stat{background:rgba(255,255,255,.12);backdrop-filter:blur(12px);padding:25px;border-radius:28px;border:1px solid rgba(255,255,255,.15)}
+.stat h3{font-size:2rem}
+
+.section{padding:90px 0}
+.card-section{background:var(--cream);border-radius:40px 40px 0 0}
+.title{text-align:center;margin-bottom:50px}
+.title h2{font-family:'Cormorant Garamond',serif;font-size:3.5rem}
+
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.feature,.destination,.service{
+background:var(--card);
+padding:30px;border-radius:30px;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+transition:.3s;
+}
+.feature:hover,.destination:hover,.service:hover{transform:translateY(-8px)}
+.destination img{width:100%;height:220px;object-fit:cover;border-radius:22px;margin-bottom:15px}
+
+.dark{background:linear-gradient(135deg,var(--maroon),#4e0014);color:#fff}
+.counter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
+.counter{background:rgba(255,255,255,.08);padding:35px;border-radius:28px;text-align:center}
+
+.footer{background:#2d000d;color:#fff;padding:50px 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+
+@media(max-width:900px){
+.hero-grid,.grid4,.counter-grid,.footer-grid{grid-template-columns:1fr}
+.hero h1{font-size:3rem}
+nav ul{display:none}
+}
+/* FULL SCREEN BACKGROUND SLIDESHOW */
+
+.bg-slider{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+overflow:hidden;
+}
+
+.bg-slider img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+animation:slideshow 30s infinite;
+}
+
+.bg-slider img:nth-child(1){
+animation-delay:0s;
+}
+
+.bg-slider img:nth-child(2){
+animation-delay:6s;
+}
+
+.bg-slider img:nth-child(3){
+animation-delay:12s;
+}
+
+.bg-slider img:nth-child(4){
+animation-delay:18s;
+}
+
+.bg-slider img:nth-child(5){
+animation-delay:24s;
+}
+
+.bg-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(70,0,20,0.60);
+z-index:-1;
+}
+
+@keyframes slideshow{
+
+0%{
+opacity:0;
+transform:translateX(120px) scale(1.1);
+}
+
+8%{
+opacity:1;
+transform:translateX(0px) scale(1);
+}
+
+28%{
+opacity:1;
+transform:translateX(-40px) scale(1.03);
+}
+
+36%{
+opacity:0;
+transform:translateX(-120px) scale(1.08);
+}
+
+100%{
+opacity:0;
+}
+}
+animation: slideshow 35s infinite;
+
+.bg-slider img:nth-child(1){animation-delay:0s;}
+.bg-slider img:nth-child(2){animation-delay:5s;}
+.bg-slider img:nth-child(3){animation-delay:10s;}
+.bg-slider img:nth-child(4){animation-delay:15s;}
+.bg-slider img:nth-child(5){animation-delay:20s;}
+.bg-slider img:nth-child(6){animation-delay:25s;}
+.bg-slider img:nth-child(7){animation-delay:30s;}
+
+.logo img{
+height:80px;
+width:auto;
+display:block;
+}
+/* TRUSTED SECTION */
+.partners-section {
+    padding: 100px 5%;
+    background: #f8f8f8;
+    text-align: center;
+}
+
+/* TOP BADGE */
+.section-badge {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #d5c2c2;
+    border-radius: 12px;
+    background: #fff;
+    color: #5d0b24;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* TITLE */
+.section-title {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.2;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+}
+
+/* GRID */
+/* .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 35px;
+} */
+ .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+}
+
+/* CARD */
+.partner-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 24px;
+    padding: 40px 20px;
+    transition: all 0.35s ease;
+    cursor: pointer;
+}
+
+/* HOVER EFFECT */
+.partner-card:hover {
+    transform: translateY(-12px);
+    border-color: #7a1435;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+/* LOGO BOX */
+.partner-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    background: #fff;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.partner-logo {
+    width: 95px;
+    height: 95px;
+    margin: 0 auto 24px;
+    background: #fff;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: all 0.35s ease;
+}
+
+/* ICON CARDS */
+.icon-card {
+    font-size: 50px;
+}
+
+/* TEXT */
+.partner-card {
+    background: #e6e1e1;
+
+    border: 1px solid #ececec;
+    border-radius: 20px;
+    padding: 30px 20px;
+    min-height: 280px;
+    transition: all 0.35s ease;
+    cursor: pointer;
+}
+
+.partner-card:hover {
+    transform: translateY(-10px);
+    border-color: #7a1435;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+.partner-card:hover .partner-logo {
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(122,20,53,0.18);
+}
+.partner-card:hover h3 {
+    color: #7a1435;
+}
+
+
+/* MOBILE */
+@media(max-width:768px) {
+    .section-title {
+        font-size: 16px;
+    }
+
+    .partner-card h3 {
+        font-size: 24px;
+    }
+
+    .partner-card p {
+        font-size: 18px;
+    }
+}
+@media(max-width:1200px){
+    .partners-grid{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media(max-width:768px){
+    .partners-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+.partner-card:hover .partner-logo {
+    transform: scale(1.05);
+    transition: 0.35s ease;
+}
+.partner-logo img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    filter: contrast(1.15);
+}
+.partner-logo {
+    transition: 0.35s ease;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+.destination{
+    text-decoration:none;
+    color:inherit;
+    display:block;
+}           
+footer {
+  background: var(--dark);
+  color: rgb(255, 254, 253);
+  text-align: center; padding: 36px 20px;
+  font-size: 0.84rem;
+}
+
+footer strong { color: var(--gold); }
+
+/* ─── ANIMATIONS ──────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%   { opacity: 0.6; transform: scale(1); }
+  70%  { opacity: 0;   transform: scale(1.5); }
+  100% { opacity: 0;   transform: scale(1.5); }
+}
+</style>
+
+</head>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<body>
+    
+    
+<div class="bg-slider">
+
+<img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1920" alt="Halong Bay">
+
+<img src="https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=1920" alt="Halong Bay">
+
+<img src="https://images.unsplash.com/photo-1555921015-5532091f6026?q=80&w=1920" alt="Hanoi">
+
+<img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?q=80&w=1920" alt="Ho Chi Minh City">
+
+<img src="https://images.unsplash.com/photo-1504457047772-27faf1c00561?q=80&w=1920" alt="Vietnam Landscape">
+
+<img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1920" alt="Da Nang">
+
+<img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?q=80&w=1920" alt="Sapa">
+
+</div>
+
+<div class="bg-overlay"></div>
+<nav>
+<div class="logo">
+    <img src="https://sembark.com/assets/images/Business%20Logos/websitelogo.png" alt="TheVietnamDMC Logo" style="width:140px; height:auto;">
+</div>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="about.htm">About</a></li>
+<li><a href="destination.htm">Destinations</a></li>
+<li><a href="services.htm">Services</a></li>
+
+<li><a href="#mice">MICE</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<a href="get_quote.htm" class="cta">Get Quote</a>
+</nav>
+
+<section id="home" class="hero">
+<div class="container hero-grid">
+<div>
+<div class="badge">Your B2B ally</div>
+<h1>Crafting Extraordinary Vietnam Journeys</h1>
+<p>Premium B2B destination management services for travel agents, tour operators and corporate clients worldwide.</p>
+<div class="btns">
+<a class="btn-primary" href="get_quote.htm">Get Quote</a>
+<a class="btn-secondary" href="#">Explore Vietnam</a>
+</div>
+</div>
+
+<div class="stats">
+<div class="stat"><h3>5000+</h3><p>Tours Operated</p></div>
+<div class="stat"><h3>550+</h3><p>Partner Hotels</p></div>
+<div class="stat"><h3>98%</h3><p>Agent Satisfaction</p></div>
+<div class="stat"><h3>24/7</h3><p>Ground Support</p></div>
+</div>
+</div>
+</section>
+
+<div class="card-section">
+<section class="section container">
+<div class="title"><h2>Why Choose Us</h2></div>
+<div class="grid4">
+<div class="feature"><h3>Dedicated DMC Team</h3><p>Expert Vietnam specialists.</p></div>
+<div class="feature"><h3>Luxury Hotel Contracts</h3><p>Exclusive negotiated rates.</p></div>
+<div class="feature"><h3>Fast Quotations</h3><p>Quick turnaround support.</p></div>
+<div class="feature"><h3>24/7 Execution</h3><p>Local Ground Team available .</p></div>
+</div>
+</section>
+<section class="partners-section">
+    <div class="section-badge">
+        Trusted by Industry Leaders
+    </div>
+
+    <h2 class="section-title">
+        Our Luxury Accommodation Partners & Certifications
+    </h2>
+
+    <div class="partners-grid">
+
+        <!-- Card 1 -->
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="https://customer-assets.emergentagent.com/job_discover-vietnam/artifacts/tov08qs0_WhatsApp%20Image%202026-02-16%20at%2015.28.58.jpeg" alt="Melia">
+            </div>
+            <h3>Wyndham Grand</h3>
+            <p>Luxury Partner</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="https://customer-assets.emergentagent.com/job_discover-vietnam/artifacts/xxrgn7f6_WhatsApp%20Image%202026-02-16%20at%2015.24.26.jpeg" alt="Equatorial">
+            </div>
+            <h3>Equatorial</h3>
+            <p>Luxury Partner</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="partner-card">
+            <div class="partner-logo">
+                <img src="https://customer-assets.emergentagent.com/job_discover-vietnam/artifacts/ciuqotpd_WhatsApp%20Image%202026-02-16%20at%2015.30.21.jpeg" alt="Wyndham">
+            </div>
+            <h3>Melia Vinpearl</h3>
+            <p>Luxury Partner</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="partner-card">
+            <div class="partner-logo icon-card">
+                🏅
+            </div>
+            <h3>Expert Team</h3>
+            <p>Multilingual Guides</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="partner-card">
+            <div class="partner-logo icon-card">
+                ⭐
+            </div>
+            <h3>Google Verified</h3>
+            <p>4.8★ Rating</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="partner-card">
+            <div class="partner-logo icon-card">
+                🛡️
+            </div>
+            <h3>B2B Certified</h3>
+            <p>Trusted DMC</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section container">
+<div class="title"><h2>Hottest Selling Destinations</h2></div>
+<div class="grid4">
+<div class="destination"><img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200"><h3>Halong Bay</h3></div>
+<div class="destination"><img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/12/3f/ef/43.jpg"><h3>Danang</h3></div>
+<div class="destination"><img src="https://images.unsplash.com/photo-1555921015-5532091f6026?q=80&w=1200"><h3>Hanoi</h3></div>
+<div class="destination"><img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?q=80&w=1200"><h3>Ho Chi Minh City</h3></div>
+<div class="destination"><img src="https://images.unsplash.com/photo-1730714103959-5d5a30acf547?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGh1JTIwcXVvY3xlbnwwfHwwfHx8MA%3D%3D"><h3>Phu Quoc</h3></div>
+<div class="destination"><img src="https://images.unsplash.com/photo-1694152363060-cc26bde73872?q=80&w=1229&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"><h3>Sapa</h3></div>
+<div class="destination"><img src="https://media.istockphoto.com/id/1347162662/photo/aerial-view-of-ancient-phuoc-hue-pagoda-on-summers-day-in-bao-loc-vietnam.webp?a=1&b=1&s=612x612&w=0&k=20&c=N1EhkravALGjdZ-4JYlaFi686Otnh_kcdfsIgBVIWSA="><h3>Da Lat</h3>
+</div>
+<div class="destination"><img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2025/12/30/1633459/Anh-1_Redbus.jpg"><h3>Nha Trang</h3>
+</div>
+<div class="destination"><img src="https://images.unsplash.com/photo-1656692197297-cb1340b4d538?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"><h3>Ninh Binh</h3></div>
+<div class="destination"><img src="https://media.istockphoto.com/id/2215118959/photo/woman-working-in-incense-making-village-in-vietnam.webp?a=1&b=1&s=612x612&w=0&k=20&c=J_AaNNpRVuy6Ki9q92KYElQ11RsNyYtMENZxjCJVSm0="><h3>Incense Stick Village</h3></div>
+</div>
+
+
+</section>
+
+<section class="section container">
+  <div class="title">
+    <h2>Luxury Services</h2>
+  </div>
+
+  <div class="grid4 luxury-grid">
+
+    <div class="luxury-card">
+      <div class="luxury-icon">🏨</div>
+      <h3>Hotel Bookings</h3>
+      <p>Handpicked luxury & boutique hotels with exclusive B2B rates.</p>
+    </div>
+
+    <div class="luxury-card">
+      <div class="luxury-icon">🚘</div>
+      <h3>Airport Transfers</h3>
+      <p>Premium vehicles with professional chauffeurs & VIP handling.</p>
+    </div>
+
+    <div class="luxury-card">
+      <div class="luxury-icon">🧳</div>
+      <h3>FIT & GIT Packages</h3>
+      <p>Tailor-made itineraries for individuals, groups & corporates.</p>
+    </div>
+
+    <div class="luxury-card">
+      <div class="luxury-icon">🚢</div>
+      <h3>Halong Cruises</h3>
+      <p>Luxury overnight cruises with curated experiences.</p>
+    </div>
+
+  </div>
+</section>
+</div>
+<!-- OUR NUMBERS  -->
+<!-- <section class="section dark">
+<div class="container">
+<div class="title"><h2>Our Numbers</h2></div>
+<div class="counter-grid">
+<div class="counter"><h2>5000+</h2><p>Guests Served</p></div>
+<div class="counter"><h2>250+</h2><p>Agent Partners</p></div>
+<div class="counter"><h2>15+</h2><p>Years Experience</p></div>
+<div class="counter"><h2>9</h2><p>Destinations</p></div>
+</div>
+</div>
+</section> -->
+
+<!-- <footer class="footer">
+<div class="container footer-grid">
+<div>
+<h2>TheVietnamDMC</h2>
+<p>Your B2B ally</p>
+</div>
+<div><h3>Destinations</h3><p>Hanoi<br>Halong<br>Sapa</p></div>
+<div><h3>Services</h3><p>Hotels<br>Tours<br>MICE</p></div>
+<div><h3>Contact</h3><p>sales@thevietnamdmc.com</p></div>
+</div>
+</footer> -->
+<!-- OFFICE LOCATION SECTION -->
+<section class="office-section">
+
+    <div class="office-container">
+
+        <h2 class="office-title">Visit Our Office</h2>
+
+        <div class="office-grid">
+
+            <div class="office-map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.9!2d77.1736!3d28.7041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d036cbe2dcfb9%3A0xde9786a9e21dfeef!2sTheVietnamDMC!5e0!3m2!1sen!2sin!4v1234567890"
+                    loading="lazy"
+                    allowfullscreen="">
+                </iframe>
+            </div>
+
+            <div class="office-info">
+
+                <h3>📍 Address</h3>
+
+                <p>
+                    13/C, opposite Golden Keys Inn,<br>
+                    Pocket D, Phase 3,<br>
+                    Ashok Vihar III,<br>
+                    Delhi - 110052
+                </p>
+
+                <hr>
+
+                <h3>📞 Contact</h3>
+
+                <p>
+                   +91 78278 45500<br>
+                    +91 9810619831
+                </p>
+
+                <hr>
+
+                <h3>✉️ Email</h3>
+
+                <p>
+                    b2b@thevietnamdmc.com
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<footer>
+  <p>© 2026 <strong>TheVietnamDMC</strong> · Premium B2B Travel Services · Vietnam's Trusted DMC Partner</p>
+</footer>
+</body>
+</html>
+
+<!-- This website was created by Apurva Aniket during intersnhip training at TheVietnamDMC. All rights reserved. -->

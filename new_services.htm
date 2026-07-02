@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="bg_logo.png" type="image/png">  
+<title>The Vietnam DMC - Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+
+/* ─── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --wine:   #A10028;
+  --wine2:  #7a1435;
+  --gold:   #D4AF37;
+  --gold2:  #c49b20;
+  --cream:  #f5f0eb;
+  --dark:   #1a0d12;
+  --dark2:  #2b1820;
+  --mid:    #3d2030;
+  --light:  #f9f4f0;
+  --text:   #2b1820;
+  --muted:  #6b4c57;
+  --border: rgba(161,0,40,0.15);
+  --shadow: 0 20px 60px rgba(26,13,18,0.12);
+  --maroon: #b9b5b7;
+  --card:   #FFF9FB;
+}
+
+/* ─── RESET & BASE ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--light);
+  color: var(--text);
+  overflow-x: hidden;
+  zoom: 0.95;
+}
+
+/* ─── NAV — exact copy from index ────────────────────────── */
+nav{
+width:min(1400px,50%);
+}
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:min(1600px,95%);
+z-index:99;
+
+background:#aba8a8;
+padding:15px 28px;
+border-radius:32px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+border:4px solid #635a5a;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+.logo{color:#1b1313;font-weight:700;font-size:1.4rem}
+nav ul{display:flex;gap:24px;list-style:none}
+nav a{
+text-decoration:none;
+color:#000000;
+font-weight:700;
+font-size:1.1rem;
+}
+.cta{background:linear-gradient(135deg,var(--gold),#f3d77d);padding:12px 20px;border-radius:999px;color:#4b0013;font-weight:bold}
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero {
+  min-height: 62vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 140px 20px 80px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #1a0d12 0%, #3d1228 40%, #1a0d12 100%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(161,0,40,0.3) 0%, transparent 50%);
+}
+
+.hero-noise {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+.hero-inner { position: relative; z-index: 1; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(212,175,55,0.12);
+  border: 1px solid rgba(212,175,55,0.3);
+  padding: 7px 18px;
+  border-radius: 50px;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-weight: 600; line-height: 1.1;
+  color: #fff;
+  margin-bottom: 20px;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+
+.hero h1 em {
+  font-style: italic; color: var(--gold);
+}
+
+.hero p {
+  max-width: 640px; margin: 0 auto;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.hero-divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 28px auto 0;
+  animation: fadeUp 0.7s 0.45s ease both;
+}
+
+/* ─── SECTION CHROME ──────────────────────────────────────── */
+.section {
+  padding: 90px 5%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--wine); margin-bottom: 12px;
+}
+
+.section-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600; color: var(--dark2); line-height: 1.15;
+}
+
+.section-header h2 span { color: var(--wine); }
+
+.section-header p {
+  margin-top: 14px;
+  color: var(--muted); font-size: 1rem; max-width: 560px; margin-left: auto; margin-right: auto;
+}
+
+/* ─── SERVICES GRID ───────────────────────────────────────── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ─── SERVICE CARD ────────────────────────────────────────── */
+.scard {
+  background: #fff;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s;
+  cursor: default;
+  animation: fadeUp 0.6s ease both;
+}
+
+.scard::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(161,0,40,0.04) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.35s;
+}
+
+.scard:hover { transform: translateY(-8px); box-shadow: 0 28px 64px rgba(26,13,18,0.14); }
+.scard:hover::before { opacity: 1; }
+
+.scard-accent {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--wine), var(--gold));
+  opacity: 0; transition: opacity 0.3s;
+  border-radius: 24px 24px 0 0;
+}
+.scard:hover .scard-accent { opacity: 1; }
+
+.scard-icon {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, #fdf0f3, #fce8ed);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+.scard:hover .scard-icon { transform: scale(1.1) rotate(-3deg); }
+
+.scard-tag {
+  display: inline-block;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--wine); background: rgba(161,0,40,0.07);
+  padding: 4px 12px; border-radius: 50px;
+  margin-bottom: 10px;
+}
+
+.scard h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem; font-weight: 600; color: var(--dark2);
+  margin-bottom: 10px; line-height: 1.2;
+}
+
+.scard p {
+  font-size: 0.9rem; color: var(--muted);
+  line-height: 1.7; margin-bottom: 18px;
+}
+
+.scard-bullets {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 6px;
+  margin-bottom: 20px;
+}
+
+.scard-bullets li {
+  font-size: 0.84rem; color: var(--muted);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.scard-bullets li::before {
+  content: '';
+  width: 5px; height: 5px; flex-shrink: 0;
+  background: var(--gold); border-radius: 50%;
+}
+
+.scard-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.82rem; font-weight: 600; color: var(--wine);
+  letter-spacing: 0.04em; text-decoration: none;
+  transition: gap 0.2s;
+}
+.scard-cta:hover { gap: 10px; }
+.scard-cta svg { width: 14px; height: 14px; }
+
+/* ─── FEATURED CARD (wide) ────────────────────────────────── */
+.scard.wide {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+  padding: 40px 36px;
+}
+
+.scard.wide .scard-visual {
+  border-radius: 16px; overflow: hidden;
+  height: 200px;
+  background: linear-gradient(135deg, var(--wine2), var(--dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem;
+}
+
+/* ─── VISA SECTION ────────────────────────────────────────── */
+.visa-section {
+  background: linear-gradient(135deg, #1a0d12 0%, #3d1228 100%);
+  padding: 90px 5%;
+  position: relative; overflow: hidden;
+}
+
+.visa-section::after {
+  content: '';
+  position: absolute; top: -100px; right: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,175,55,0.08), transparent 70%);
+}
+
+.visa-inner { max-width: 1300px; margin: 0 auto; }
+
+.visa-section .section-header h2 { color: #fff; }
+.visa-section .section-label { color: var(--gold); }
+.visa-section .section-header p { color: rgba(255,255,255,0.55); }
+
+.visa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.vcard {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 28px 24px;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.vcard:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(212,175,55,0.3);
+  transform: translateY(-6px);
+}
+
+.vcard-icon { font-size: 2rem; margin-bottom: 16px; }
+
+.vcard h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; color: #fff; margin-bottom: 10px;
+}
+
+.vcard p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+.vcard .vcard-badge {
+  margin-top: 16px;
+  display: inline-block;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold); background: rgba(212,175,55,0.1);
+  border: 1px solid rgba(212,175,55,0.25);
+  padding: 5px 14px; border-radius: 50px;
+}
+
+/* ─── CAKE & CELEBRATIONS ────────────────────────────────────────── */
+/* .cakes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+} */
+.cakes-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+    max-width:1200px;
+    max-height:800px;
+    margin:auto;
+}
+
+.ccard {
+  background: #fff;
+  height: 300px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s;
+}
+.cake-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+
+.ccard:hover { transform: translateY(-8px); box-shadow: 0 28px 64px rgba(26,13,18,0.14); }
+
+.ccard-top {
+  height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+  position: relative; overflow: hidden;
+}
+
+.ccard-top::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.08));
+}
+
+.gradient-pink  { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+.gradient-red   { background: linear-gradient(135deg, #fdecea, #ffcdd2); }
+.gradient-gold  { background: linear-gradient(135deg, #fff8e1, #ffecb3); }
+.gradient-teal  { background: linear-gradient(135deg, #e0f7fa, #b2ebf2); }
+.gradient-plum  { background: linear-gradient(135deg, #f3e5f5, #e1bee7); }
+
+.ccard-body { padding: 24px 22px; }
+.ccard-tag {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--wine); display: block; margin-bottom: 8px;
+}
+.ccard h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem; color: var(--dark2); margin-bottom: 10px;
+}
+.ccard p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
+
+/* ─── STATS STRIP ─────────────────────────────────────────── */
+.stats-strip {
+  background: linear-gradient(135deg, var(--wine), #6b0020);
+  padding: 56px 5%;
+}
+
+.stats-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; text-align: center;
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; font-weight: 700; color: #fff; line-height: 1;
+}
+.stat-num sup { font-size: 1.5rem; }
+.stat-label {
+  font-size: 0.82rem; color: rgba(255,255,255,0.65);
+  margin-top: 6px; letter-spacing: 0.05em; text-transform: uppercase;
+}
+
+/* ─── WHATSAPP FLOAT ──────────────────────────────────────── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 1000;
+  text-decoration: none;
+}
+
+.wa-btn {
+  width: 60px; height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+  transition: transform 0.3s cubic-bezier(.22,.68,0,1.5), box-shadow 0.3s;
+  position: relative;
+}
+
+.wa-btn:hover { transform: scale(1.12); box-shadow: 0 12px 36px rgba(37,211,102,0.55); }
+.wa-btn svg { width: 30px; height: 30px; fill: white; }
+
+.wa-tooltip {
+  position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
+  background: var(--dark);
+  color: white; font-size: 0.8rem; font-weight: 500;
+  padding: 7px 14px; border-radius: 8px; white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateY(-50%) translateX(6px);
+}
+
+.wa-float:hover .wa-tooltip {
+  opacity: 1; transform: translateY(-50%) translateX(0);
+}
+
+.wa-tooltip::after {
+  content: '';
+  position: absolute; left: 100%; top: 50%; transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: var(--dark);
+}
+
+.wa-pulse {
+  position: absolute; inset: -4px;
+  background: #25D366;
+  border-radius: 50%;
+  animation: pulse 2.5s ease infinite;
+  z-index: -1;
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.45);
+  text-align: center; padding: 36px 20px;
+  font-size: 0.84rem;
+}
+
+footer strong { color: var(--gold); }
+
+/* ─── ANIMATIONS ──────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%   { opacity: 0.6; transform: scale(1); }
+  70%  { opacity: 0;   transform: scale(1.5); }
+  100% { opacity: 0;   transform: scale(1.5); }
+}
+
+/* scroll-reveal */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* stagger children */
+.stagger > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger > *:nth-child(2) { transition-delay: 0.12s; }
+.stagger > *:nth-child(3) { transition-delay: 0.19s; }
+.stagger > *:nth-child(4) { transition-delay: 0.26s; }
+.stagger > *:nth-child(5) { transition-delay: 0.33s; }
+.stagger > *:nth-child(6) { transition-delay: 0.40s; }
+.stagger > *:nth-child(7) { transition-delay: 0.47s; }
+.stagger > *:nth-child(8) { transition-delay: 0.54s; }
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .scard.wide {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+  }
+  .scard.wide .scard-visual { display: none; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  nav ul { display: none; }
+}
+
+@media (max-width: 640px) {
+  .hero { padding: 120px 20px 60px; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .section { padding: 60px 5%; }
+  .wa-float { bottom: 20px; right: 20px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────────── -->
+<nav>
+<div class="logo">
+    <img src="https://sembark.com/assets/images/Business%20Logos/websitelogo.png" alt="TheVietnamDMC Logo" style="width:140px; height:auto;">
+</div>
+<ul>
+<li><a href="index.htm">Home</a></li>
+<li><a href="about.htm">About</a></li>
+<li><a href="destination.htm">Destinations</a></li>
+<li><a href="services.htm">Services</a></li>
+<li><a href="#mice">MICE</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<a href="get_quote.htm" class="cta">Get Quote</a>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="6" r="2" fill="currentColor"/></svg>
+      Premium B2B Travel Solutions
+    </div>
+    <h1>Our <em>Comprehensive</em><br>Travel Services</h1>
+    <p>From seamless transportation to authentic Indian cuisine, we handle every detail of your Vietnam journey — so your clients experience only the extraordinary.</p>
+    <div class="hero-divider"></div>
+  </div>
+</div>
+
+<!-- ─── STATS ─────────────────────────────────────────────── -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">5000<sup>+</sup></div>
+      <div class="stat-label">Guests Served</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">499<sup>+</sup></div>
+      <div class="stat-label">Partner Hotels</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">50<sup>+</sup></div>
+      <div class="stat-label">Halong Cruises</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">300<sup>+</sup></div>
+      <div class="stat-label">Travel Agent Base</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ALL SERVICES ──────────────────────────────────────── -->
+<div style="padding: 0 0 20px; background: var(--light);">
+<section class="section">
+  <div class="section-header reveal">
+    <span class="section-label">What We Offer</span>
+    <h2>Comprehensive <span>Travel Solutions</span></h2>
+    <p>End-to-end DMC services crafted for travel agents, tour operators, and corporate clients worldwide.</p>
+  </div>
+
+  <div class="services-grid stagger">
+
+    <!-- MICE -->
+    <div class="scard wide reveal">
+      <div class="scard-accent"></div>
+      <div class="scard-content">
+        <div class="scard-icon">🎯</div>
+        <span class="scard-tag">Corporate & Groups</span>
+        <h3>M.I.C.E</h3>
+        <p>Complete Meetings, Incentives, Conferences & Events solutions with premium venues and flawless on-ground execution across Vietnam's top destinations.</p>
+        <ul class="scard-bullets">
+          <li>Premium venue sourcing & negotiation</li>
+          <li>Dedicated MICE coordinator</li>
+          <li>AV, logistics & F&B arrangements</li>
+          <li>Team-building & incentive programs</li>
+        </ul>
+        <a href="#" class="scard-cta">Enquire Now <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="scard-visual">🏢</div>
+    </div>
+
+    <!-- FIT & GIT -->
+    <div class="scard reveal">
+      <div class="scard-accent"></div>
+      <div class="scard-icon">✈️</div>
+      <span class="scard-tag">Packages</span>
+      <h3>Holiday Packages<br>FIT & GIT</h3>
+      <p>Tailored Free Independent Traveler and Group Inclusive Tour packages. Every detail curated, every preference considered.</p>
+      <ul class="scard-bullets">
+        <li>Custom FIT itineraries</li>
+        <li>Group departures with set departures</li>
+        <li>Private & semi-private options</li>
+      </ul>
+      <a href="#" class="scard-cta">View Packages <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+    </div>
+
+    <!-- HOTELS -->
+    <div class="scard reveal">
+      <div class="scard-accent"></div>
+      <div class="scard-icon">🏨</div>
+      <span class="scard-tag">Accommodation</span>
+      <h3>Hotel Accommodation</h3>
+      <p>Access to 350+ contracted hotels across Vietnam — from ultra-luxury resorts to charming boutique properties, all at negotiated B2B rates.</p>
+      <ul class="scard-bullets">
+        <li>350+ contracted properties</li>
+        <li>Luxury to budget options</li>
+        <li>Exclusive B2B negotiated rates</li>
+      </ul>
+      <a href="#" class="scard-cta">Browse Hotels <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+    </div>
+
+    <!-- HALONG -->
+    <div class="scard reveal">
+      <div class="scard-accent"></div>
+      <div class="scard-icon">⛵</div>
+      <span class="scard-tag">Signature Experience</span>
+      <h3>Halong Bay Cruises</h3>
+      <p>Over 50 cruise options including luxury overnight cruises, guided day trips, and exclusive private charters through UNESCO World Heritage waters.</p>
+      <ul class="scard-bullets">
+        <li>50+ cruise options</li>
+        <li>Luxury overnight & day trips</li>
+        <li>Private charter arrangements</li>
+      </ul>
+      <a href="#" class="scard-cta">Explore Cruises <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+    </div>
+
+    <!-- TRANSPORT -->
+    <div class="scard reveal">
+      <div class="scard-accent"></div>
+      <div class="scard-icon">🚐</div>
+      <span class="scard-tag">Ground Operations</span>
+      <h3>Transportation Services</h3>
+      <p>Our own fleet of new, comfortable, and immaculate vehicles in all categories, driven by experienced and professional drivers.</p>
+      <ul class="scard-bullets">
+        <li>Own fleet across all cities</li>
+        <li>Airport & intercity transfers</li>
+        <li>Different categories of seater vehicles available</li>
+      </ul>
+      <a href="#" class="scard-cta">Check Availability <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+    </div>
+
+    <!-- GUIDES -->
+    <div class="scard reveal">
+      <div class="scard-accent"></div>
+      <div class="scard-icon">🧭</div>
+      <span class="scard-tag">Local Expertise</span>
+      <h3>Expert Guides</h3>
+      <p>Experienced multilingual tour guides and a dedicated local Vietnamese on-ground execution team ensuring seamless experiences.</p>
+      <ul class="scard-bullets">
+        <li>English speaking guides available</li>
+        <li>24/7 ground support team</li>
+        <li>Local knowledge & insider access</li>
+      </ul>
+      <a href="#" class="scard-cta">Meet Our Team <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+    </div>
+
+    <!-- INDIAN FOOD -->
+    <div class="scard wide reveal">
+      <div class="scard-accent"></div>
+      <div class="scard-content">
+        <div class="scard-icon">🍛</div>
+        <span class="scard-tag">Indian Cuisine</span>
+        <h3>Contracted Indian Restaurants</h3>
+        <p>Partnered with the finest Indian restaurants across all major Vietnamese cities. Authentic flavors from home, guaranteed for your group's comfort.</p>
+        <ul class="scard-bullets">
+          <li>Pure Veg, Jain & Gujarati menus</li>
+          <li>South Indian options available</li>
+          <li>Group buffet setups & advance booking</li>
+          <li>Hanoi, Danang & Ho Chi Minh City coverage</li>
+        </ul>
+        <a href="#" class="scard-cta">View Restaurants <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="scard-visual">🍛</div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- ─── VISA SERVICES ──────────────────────────────────────── -->
+<div class="visa-section">
+  <div class="visa-inner">
+    <div class="section-header reveal">
+      <span class="section-label">Documentation</span>
+      <h2 style="color:#fff">Visa <span style="color:var(--gold)">Services</span></h2>
+      <p>Hassle-free Vietnam visa processing for Indian travelers with quick turnaround time and expert support.</p>
+    </div>
+
+    <div class="visa-grid stagger">
+
+      <div class="vcard reveal">
+        <div class="vcard-icon">🛂</div>
+        <h3>Tourist Visa Support</h3>
+        <p>Fast and reliable visa processing assistance for all B2B clients and groups traveling to Vietnam from India.</p>
+        <span class="vcard-badge">Quick Processing</span>
+      </div>
+
+      <div class="vcard reveal">
+        <div class="vcard-icon">📄</div>
+        <h3>Visa Letters</h3>
+        <p>Visa handling and support letters for smooth visa approvals and seamless group travel documentation.</p>
+        <span class="vcard-badge">All Group Sizes</span>
+      </div>
+
+      <div class="vcard reveal">
+        <div class="vcard-icon">⚡</div>
+        <h3>Express Processing</h3>
+        <p>Urgent visa assistance for last-minute bookings and time-sensitive group departures with dedicated follow-up.</p>
+        <span class="vcard-badge">48–72 hrs</span>
+      </div>
+
+      <div class="vcard reveal">
+        <div class="vcard-icon">👨‍👩‍👧‍👦</div>
+        <h3>Group Visa Handling</h3>
+        <p>Bulk visa coordination for large groups with dedicated documentation support and real-time status updates.</p>
+        <span class="vcard-badge">Groups 10+</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ─── CELEBRATIONS ──────────────────────────────────────── -->
+<div style="background: var(--light);">
+<section class="section">
+  <div class="section-header reveal">
+    <span class="section-label">Special Moments</span>
+    <h2>Cakes & <span>Custom Celebrations</span></h2>
+    <p>We turn travel milestones into magical memories — completely customised, impeccably executed.</p>
+  </div>
+
+  <div class="cakes-grid stagger">
+
+    <div class="ccard reveal">
+      <div class="ccard-top gradient-pink">🎂</div>
+       <!-- <div class="ccard-top">
+    <img src="https://theovenchef.com/wp-content/uploads/2023/08/WhatsApp-Image-2023-11-01-at-5.39.28-PM-1-scaled-e1698841246352.jpeg" alt="Birthday Celebration">
+</div> -->
+      <div class="ccard-body">
+        <span class="ccard-tag">Celebrations</span>
+        <h3>Birthday Celebrations</h3>
+        <p>Custom cakes, balloon décor, personalised banners, and surprise hotel room setups crafted to delight every guest.</p>
+      </div>
+    </div>
+
+    <div class="ccard reveal">
+      <div class="ccard-top gradient-red">💑</div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Romance</span>
+        <h3>Honeymoon Setups</h3>
+        <p>Romantic turndown services, rose petal arrangements, candlelit dinners on resort balconies and cruise decks.</p>
+      </div>
+    </div>
+
+    <!-- <div class="ccard reveal">
+      <div class="ccard-top gradient-gold">💍</div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Milestones</span>
+        <h3>Anniversary Surprises</h3>
+        <p>Thoughtfully personalised anniversary setups — from intimate room decorations to private beach dinners.</p>
+      </div>
+    </div> -->
+
+    <div class="ccard reveal">
+      <div class="ccard-top gradient-teal">🏢</div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Corporate</span>
+        <h3>Corporate Events</h3>
+        <p>Branded event setups, welcome kits, and customised MICE celebration packages for VIP clients and incentive groups.</p>
+      </div>
+    </div>
+
+    <!-- <div class="ccard reveal">
+      <div class="ccard-top gradient-plum">🎊</div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Custom</span>
+        <h3>Bespoke Surprises</h3>
+        <p>Tell us your vision — we'll craft any personalised celebration, décor theme, or surprise moment for your client.</p>
+      </div>
+    </div> -->
+
+    <!-- CTA card -->
+    <div class="ccard reveal" style="background: linear-gradient(135deg, var(--wine), #6b0020); color: white; border: none; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 28px;">
+      <div style="font-size: 2.5rem; margin-bottom: 16px;">✨</div>
+      <h3 style="color: white; font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; margin-bottom: 12px;">Have Something Special in Mind?</h3>
+      <p style="color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.65; margin-bottom: 20px;">Every celebration is unique. Let us know your vision and we'll make it happen.</p>
+      <a href="https://api.whatsapp.com/send/?phone=919810619831&text=Hello%21+I+am+interested+in+your+Vietnam+travel+services.+Could+you+please+provide+more+information%3F&type=phone_number&app_absent=0" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--dark); padding: 12px 24px; border-radius: 50px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(212,175,55,0.4);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+        💬 Chat on WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <p>© 2026 <strong>TheVietnamDMC</strong> · Premium B2B Travel Services · Vietnam's Trusted DMC Partner</p>
+</footer>
+
+<!-- ─── WHATSAPP FLOAT ─────────────────────────────────────── -->
+<a class="wa-float" href="https://api.whatsapp.com/send/?phone=919810619831&text=Hello%21+I+am+interested+in+your+Vietnam+travel+services.+Could+you+please+provide+more+information%3F&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <div class="wa-btn">
+    <div class="wa-pulse"></div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </div>
+  <span class="wa-tooltip">Chat with us!</span>
+</a>
+
+<!-- ─── SCRIPTS ────────────────────────────────────────────── -->
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

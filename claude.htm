@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – The Vietnam DMC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red:   #c0392b;
+      --gold:  #b8860b;
+      --navy:  #1a1f2e;
+      --cream: #faf8f4;
+      --muted: #6b7280;
+      --nav-h: 72px;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: #1a1a1a; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(10,10,10,.93);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-logo img { height: 42px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.8); text-decoration: none;
+      font-size: .8rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta {
+      background: var(--red); color: #fff;
+      padding: 9px 20px; border-radius: 4px;
+      font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none;
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: #fff; }
+
+    /* HERO */
+    .hero {
+      margin-top: var(--nav-h);
+      height: 320px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .hero span {
+      display: block; font-size: .7rem; font-weight: 600; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem); color: #fff; line-height: 1.2;
+    }
+    .hero p { color: rgba(255,255,255,.55); margin-top: 12px; font-size: .92rem; }
+
+    /* SECTIONS */
+    .section { padding: 64px 0; }
+    .section.alt { background: #fff; }
+    .section.dark { background: var(--navy); }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+    .label {
+      font-size: .68rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--navy); line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    .dark h2 { color: #fff; }
+    p.body { color: var(--muted); line-height: 1.8; font-size: .93rem; max-width: 620px; }
+    .dark p.body { color: rgba(255,255,255,.5); }
+
+    /* WHO WE ARE – two col */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .two-col img {
+      width: 100%; height: 380px;
+      object-fit: cover; object-position: center top;
+      border-radius: 6px;
+      display: block;
+    }
+    .stat-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .stat {
+      border: 1px solid rgba(184,134,11,.3); border-radius: 4px;
+      padding: 10px 16px; font-size: .8rem; color: var(--navy);
+    }
+    .stat strong { display: block; color: var(--gold); font-size: 1.15rem; }
+
+    /* PHOTO STRIP – uniform row of cards */
+    .photo-strip {
+      display: grid;
+      gap: 14px;
+    }
+    .photo-strip.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .photo-strip.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .photo-strip.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .photo-card {
+      border-radius: 6px; overflow: hidden; position: relative;
+      background: #111;
+    }
+    .photo-card img {
+      width: 100%; height: 220px;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform .4s;
+    }
+    .photo-card:hover img { transform: scale(1.04); }
+    .photo-card .cap {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 28px 14px 12px;
+      background: linear-gradient(transparent, rgba(0,0,0,.72));
+      color: #fff; font-size: .76rem; font-weight: 600; letter-spacing: .05em;
+    }
+
+    /* TALL card variant */
+    .photo-card.tall img { height: 320px; }
+
+    /* VALUES – simple 3 col */
+    .val-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 36px; }
+    .val {
+      background: var(--cream); border-radius: 6px;
+      padding: 24px 20px; border: 1px solid rgba(0,0,0,.07);
+    }
+    .val .ico { font-size: 1.6rem; margin-bottom: 10px; }
+    .val h4 { font-size: .9rem; font-weight: 600; margin-bottom: 6px; color: var(--navy); }
+    .val p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+
+    /* CTA */
+    .cta { background: var(--red); padding: 56px 0; text-align: center; }
+    .cta h2 { color: #fff; margin-bottom: 10px; }
+    .cta p { color: rgba(255,255,255,.75); margin-bottom: 28px; font-size: .9rem; }
+    .btn-w {
+      display: inline-block; background: #fff; color: var(--red);
+      padding: 11px 28px; border-radius: 4px; font-size: .8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em; text-decoration: none;
+      margin: 4px 6px;
+    }
+    .btn-o {
+      display: inline-block; border: 2px solid rgba(255,255,255,.6); color: #fff;
+      padding: 11px 28px; border-radius: 4px; font-size: .8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .06em; text-decoration: none;
+      margin: 4px 6px;
+    }
+
+    footer {
+      background: #0d0d0d; color: rgba(255,255,255,.4);
+      text-align: center; padding: 24px; font-size: .76rem;
+    }
+    footer strong { color: var(--gold); }
+
+    /* MOBILE */
+    @media (max-width: 860px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: #111; padding: 20px; gap: 18px; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .two-col { grid-template-columns: 1fr; }
+      .two-col img { height: 260px; }
+      .photo-strip.cols-4 { grid-template-columns: repeat(2,1fr); }
+      .photo-strip.cols-3 { grid-template-columns: repeat(2,1fr); }
+      .val-grid { grid-template-columns: 1fr 1fr; }
+      .wrap { padding: 0 20px; }
+    }
+    @media (max-width: 520px) {
+      .photo-strip.cols-4,
+      .photo-strip.cols-3,
+      .photo-strip.cols-2 { grid-template-columns: 1fr; }
+      .val-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://helosis09.github.io/check/" class="nav-logo">
+    <img src="https://sembark.com/assets/images/Business%20Logos/websitelogo.png" alt="TheVietnamDMC" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="https://helosis09.github.io/check/">Home</a></li>
+    <li><a href="about.htm" class="active">About</a></li>
+    <li><a href="https://helosis09.github.io/check/#destinations">Destinations</a></li>
+    <li><a href="https://helosis09.github.io/check/services.htm">Services</a></li>
+    <li><a href="https://helosis09.github.io/check/#mice">MICE</a></li>
+    <li><a href="https://helosis09.github.io/check/#contact">Contact</a></li>
+  </ul>
+  <a href="https://helosis09.github.io/check/get_quote.htm" class="nav-cta">Get Quote</a>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <span>Who We Are</span>
+    <h1>Vietnam's Trusted B2B DMC Partner</h1>
+    <p>Connecting Indian travel trade with seamless ground services across Vietnam.</p>
+  </div>
+</div>
+
+<!-- WHO WE ARE -->
+<section class="section">
+  <div class="wrap">
+    <div class="two-col">
+      <img
+        src="https://media.licdn.com/dms/image/v2/D5622AQFSTJjF6Gy3jg/feedshare-image-high-res/B56ZlhGQubKAAo-/0/1758270656477?e=1782345600&v=beta&t=4v9pE6YfegOJ_O4OSFsBmQNkurWmdt34izWmDlJ3Zhs"
+        alt="TheVietnamDMC Team"
+        onerror="this.src='https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=800'"
+      />
+      <div>
+        <p class="label">About Us</p>
+        <h2>Your Dedicated Ground Partner in Vietnam</h2>
+        <p class="body">
+          TheVietnamDMC is a premium B2B Destination Management Company operating exclusively with travel agents, tour operators, and corporate clients. With 15+ years of ground experience and deep hotel partnerships across Vietnam, we handle every detail on the ground — so your clients enjoy a flawless journey.
+        </p>
+        <p class="body" style="margin-top:12px;">
+          Our India-based operations team works closely with our Vietnam ground team to ensure fast quotations, smooth bookings, and 24/7 support.
+        </p>
+        <div class="stat-row">
+          <div class="stat"><strong>5,000+</strong>Guests Served</div>
+          <div class="stat"><strong>250+</strong>Agent Partners</div>
+          <div class="stat"><strong>15+</strong>Years Experience</div>
+          <div class="stat"><strong>9</strong>Destinations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OTM MUMBAI 2026 -->
+<section class="section alt">
+  <div class="wrap">
+    <p class="label">Industry Presence</p>
+    <h2>OTM Mumbai 2026 &amp; SATTE</h2>
+    <p class="body" style="margin-bottom:28px;">We meet our partners where they are — at India's biggest travel trade shows.</p>
+    <div class="photo-strip cols-2" style="margin-bottom:14px;">
+      <div class="photo-card tall">
+        <img
+          src="https://media.licdn.com/dms/image/v2/D5622AQHKTPurVlMXtw/feedshare-shrink_1280/B56ZxDd8XcIEAc-/0/1770658449483?e=1782345600&v=beta&t=0uwuT4TssPPIuP3S0F1rv_5OgeXAZYZs7kmLESGRGIQ"
+          alt="OTM Mumbai 2026"
+          onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800'"
+        />
+        <div class="cap">OTM Mumbai 2026</div>
+      </div>
+      <div class="photo-card tall">
+        <img
+          src="https://media.licdn.com/dms/image/v2/D5622AQHJr4a9FtpXoQ/feedshare-shrink_1280/B56ZxDd7yDHIAc-/0/1770658446740?e=1782345600&v=beta&t=cczSBs79DNSqokG-Ka5Iem7Xh2tHriTOs5qmdUX8GCs"
+          alt="OTM Booth"
+          onerror="this.src='https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800'"
+        />
+        <div class="cap">Our Booth — Meeting India's Travel Trade</div>
+      </div>
+    </div>
+    <div class="photo-strip cols-2">
+      <div class="photo-card">
+        <img
+          src="https://media.licdn.com/dms/image/v2/D5622AQFyMppalP35Sw/feedshare-image-high-res/B56Zwx8k4.KMAU-/0/1770364489633?e=1782345600&v=beta&t=0kXZfqaM6cThjl-WIBBeMmucqW6dy9f8gbPPUWD2J34"
+          alt="SATTE 2026"
+          onerror="this.src='https://images.unsplash.com/photo-1561489413-985b06da5bee?q=80&w=800'"
+        />
+        <div class="cap">SATTE 2026 — New Delhi</div>
+      </div>
+      <div class="photo-card">
+        <img
+          src="https://media.licdn.com/dms/image/v2/D5622AQHfYQxvffwhNg/feedshare-image-high-res/B56ZxDd7geK4AU-/0/1770658445648?e=1782345600&v=beta&t=2rtC47ZdID6cBX-uw7pmdGQAFypB0tC3hDbFxEemH30"
+          alt="OTM Highlights"
+          onerror="this.src='https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=800'"
+        />
+        <div class="cap">OTM 2026 Highlights</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS & FESTIVALS -->
+<section class="section">
+  <div class="wrap">
+    <p class="label">On the Ground</p>
+    <h2>Events &amp; Festivals We Cover</h2>
+    <p class="body" style="margin-bottom:28px;">From lantern-lit streets to cultural celebrations — our team ensures your clients are in the right place at the right time.</p>
+    <div class="photo-strip cols-2">
+      <div class="photo-card tall">
+        <img
+          src="https://media.licdn.com/dms/image/v2/D5622AQFOavWksPGO2Q/feedshare-image-high-res/B56ZtSf3n6G0Ao-/0/1766615647050?e=1782345600&v=beta&t=RMFb2onFkz3owKe164CnHuM-MCu9N_66HhdjNkirIdc"
+          alt="Vietnam Festival"
+          onerror="this.src='https://images.unsplash.com/photo-1604999333679-b86d54738315?q=80&w=800'"
+        />
+        <div class="cap">Seasonal Festivals &amp; Cultural Events</div>
+      </div>
+      <div class="photo-card tall">
+        <img
+          src="https://media.licdn.com/dms/image/v2/D5622AQF2BoiBJlncUQ/feedshare-shrink_1280/B56Z2sMffaIQAY-/0/1776710449409?e=1782345600&v=beta&t=eD9DOEFfv1FNcwhbsqR72WcVDmat1_MDWIZMli5tO7A"
+          alt="Vietnam Event"
+          onerror="this.src='https://images.unsplash.com/photo-1596825205178-3dad5e3fc3db?q=80&w=800'"
+          style="object-position: center top;"
+        />
+        <div class="cap">Group Experiences &amp; MICE Events</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section alt">
+  <div class="wrap">
+    <p class="label">What We Stand For</p>
+    <h2>Why Agents Choose Us</h2>
+    <div class="val-grid">
+      <div class="val">
+        <div class="ico">🤝</div>
+        <h4>B2B Exclusive</h4>
+        <p>We never sell direct. Your client stays your client, always.</p>
+      </div>
+      <div class="val">
+        <div class="ico">⚡</div>
+        <h4>Fast Quotations</h4>
+        <p>Detailed itineraries and net rates turned around quickly.</p>
+      </div>
+      <div class="val">
+        <div class="ico">🛡️</div>
+        <h4>24/7 Ground Support</h4>
+        <p>Local team in Vietnam available round the clock.</p>
+      </div>
+      <div class="val">
+        <div class="ico">💎</div>
+        <h4>Luxury Contracts</h4>
+        <p>Preferred rates with Melia, Wyndham Grand &amp; Equatorial.</p>
+      </div>
+      <div class="val">
+        <div class="ico">🌐</div>
+        <h4>India-Friendly</h4>
+        <p>Vegetarian options, Hindi support, cultural sensitivity — built in.</p>
+      </div>
+      <div class="val">
+        <div class="ico">📊</div>
+        <h4>Transparent Pricing</h4>
+        <p>Clear net rates, no surprises, no hidden charges.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="wrap">
+    <h2>Ready to Partner With Us?</h2>
+    <p>Send your group requirements — we respond within 4 hours.</p>
+    <a href="https://helosis09.github.io/check/get_quote.htm" class="btn-w">Get a Quote</a>
+    <a href="https://helosis09.github.io/check/#contact" class="btn-o">Contact Us</a>
+  </div>
+</div>
+
+<footer>
+  © 2026 <strong>TheVietnamDMC</strong> · Premium B2B Travel Services · Vietnam's Trusted DMC Partner
+</footer>
+
+</body>
+</html>
